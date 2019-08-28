@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.auth.login.login"
+        android:background="@color/colorPrimary">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+        <ImageView
+                android:layout_width="184dp"
+                android:layout_height="83dp"
+                android:layout_marginBottom="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/wakel_title" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/phoneLogin"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:drawableRight="@drawable/ic_call_black_24dp"
+                android:drawablePadding="5dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/font_regular"
+                android:gravity="right|center"
+                android:hint="رقم الهاتف"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/passLogin"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:drawableRight="@drawable/ic_lock_black_24dp"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/font_regular"
+                android:gravity="right|center"
+                android:hint="كلمة المرور"
+                android:backgroundTint="@color/white"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray" />
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/round_btn"
+                android:fontFamily="@font/font_bold"
+                android:text="دخول"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/round_btn_border"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/colorAccent"
+                android:text="تسجيل"
+                android:id="@+id/toReg"
+                android:fontFamily="@font/font_bold"
+                android:textSize="20sp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/goToMain"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/font_bold"
+                android:padding="5dp"
+                android:text="تخطي"
+                android:textColor="@color/colorAccent"
+                android:textSize="22sp" />
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

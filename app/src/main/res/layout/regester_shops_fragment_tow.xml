@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context=".ui.auth.Delegate.FormTow.RegesterShopsTow">
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center|top"
+                        app:civ_border_color="@color/colorAccent"
+
+                        app:civ_border_width="3dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/SelectPhoto"
+                        app:layout_constraintEnd_toEndOf="@+id/SelectPhoto"
+                        app:layout_constraintStart_toStartOf="@+id/SelectPhoto"
+                        app:layout_constraintTop_toTopOf="@+id/SelectPhoto" />
+
+                <Button
+                        android:id="@+id/SelectPhoto"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/rounded_photo"
+                        android:text="أختر صورة"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/font_bold"
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/titleShops"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/white"
+                            android:drawableRight="@drawable/ic_person_gray_24dp"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/font_regular"
+                            android:gravity="right|center"
+                            android:hint="عنوان المحل"
+                            android:inputType="text"
+                            android:padding="10dp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/gray" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/phoneRegTow"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/white"
+                            android:drawableRight="@drawable/ic_call_black_24dp"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/font_regular"
+                            android:gravity="right|center"
+                            android:hint="رقم الهاتف لمدير المبيعات (أختياري)"
+                            android:inputType="phone"
+                            android:padding="10dp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/gray" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/locationReg"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/white"
+                            android:drawableRight="@drawable/ic_location_on_black_24dp"
+                            android:drawablePadding="5dp"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/font_regular"
+                            android:gravity="right|center"
+                            android:hint="الموقع"
+                            android:inputType="text"
+                            android:padding="10dp"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/gray" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/NearLoc"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/white"
+                            android:drawableRight="@drawable/ic_location_city_black_24dp"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/font_regular"
+                            android:gravity="right|center"
+                            android:hint="أقرب نقطة دالة"
+                            android:inputType="text"
+                            android:padding="10dp"
+
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/gray" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/loginBtnRegTow"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/round_btn"
+                            android:fontFamily="@font/font_bold"
+                            android:text="تسجيل"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                </LinearLayout>
+</LinearLayout>
+        </ScrollView>
+
+</FrameLayout>

@@ -9,11 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mustafayusef.wakely.R
+import com.mustafayusef.wakely.data.BannersResponse
 
 import kotlinx.android.synthetic.main.slider_layout.view.*
 
 
-class bannersAdapter(val context: Context) : SliderViewAdapter<bannersAdapter.SliderAdapterVH>() {
+class bannersAdapter(val context: Context,val response: BannersResponse?) : SliderViewAdapter<bannersAdapter.SliderAdapterVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup): SliderAdapterVH {
         val inflate = LayoutInflater.from(parent.context).inflate(R.layout.slider_layout, null)
@@ -22,10 +23,10 @@ class bannersAdapter(val context: Context) : SliderViewAdapter<bannersAdapter.Sl
 
     override fun onBindViewHolder(viewHolder: SliderAdapterVH, position: Int) {
       //  viewHolder.itemView. .text = "This is slider item $position"
+        var data=response!!.data.get(position)
 
 
-
-            Glide.with(context).load(R.drawable.pepsi)
+            Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+data.image)
               .into(  viewHolder.itemView.slid_Image)
 
 //       viewHolder.itemView.setOnClickListener {
@@ -53,7 +54,7 @@ class bannersAdapter(val context: Context) : SliderViewAdapter<bannersAdapter.Sl
 
     override fun getCount(): Int {
         //slider view count could be dynamic size
-        return 5
+        return response!!.data.size
     }
 
      class SliderAdapterVH(var itemView: View) : SliderViewAdapter.ViewHolder(itemView) {

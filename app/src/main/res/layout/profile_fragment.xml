@@ -3,8 +3,231 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorPrimary"
         tools:context=".ui.auth.profile.profile">
 
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="226dp"
+                    android:layout_marginBottom="20dp"
+
+                    android:orientation="vertical"
+                    android:background="@drawable/back_profile"
+                    >
+                  <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+
+                          android:layout_marginBottom="10dp"
+                          android:orientation="horizontal">
+                      <LinearLayout
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              >
+
+                          <ImageView
+                                  android:id="@+id/EditeBtn"
+                                  android:layout_width="35dp"
+                                  android:layout_height="33dp"
+                                  android:layout_gravity="right|top"
+                                  android:layout_margin="10dp"
+
+                                  android:src="@drawable/ic_edit_black_24dp" />
+
+                      </LinearLayout>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:fontFamily="@font/font_bold"
+                            android:text="معلومات المحل"
+                            android:layout_weight="1"/>
+                      <LinearLayout
+                              android:layout_width="wrap_content"
+                              android:gravity="right"
+                              android:layout_height="wrap_content">
+                          <ImageView
+                                  android:id="@+id/logOut"
+                                  android:layout_width="35dp"
+                                  android:layout_height="35dp"
+                                  android:layout_gravity="right|top"
+                                  android:layout_margin="10dp"
+                                  android:src="@drawable/ic_exit_to_app_black_24dp" />
+
+                      </LinearLayout>
+
+                  </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:layout_weight="1">
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/titleShopsP"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/ic_shopping_basket_black_24dp"
+                                android:drawablePadding="5dp"
+                                android:fontFamily="@font/font_regular"
+                                android:gravity="right|center"
+                                android:textSize="20sp"
+                                android:text="mdkd"
+                                android:textColor="@color/white" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/locationRegP"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/ic_location_on_white_24dp"
+                                android:drawablePadding="5dp"
+                                android:fontFamily="@font/font_regular"
+                                android:gravity="right|center"
+                                android:textSize="20sp"
+                                android:text="mdkd"
+                                android:textColor="@color/white" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/phoneShop"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/ic_call_white_24dp"
+                                android:drawablePadding="5dp"
+                                android:fontFamily="@font/font_regular"
+                                android:gravity="right|center"
+                                android:textSize="20sp"
+                                android:text="mdkd"
+                                android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:layout_marginLeft="5dp"
+                         >
+                        <ImageView
+                                android:id="@+id/profileImage"
+                                android:layout_width="150dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center|top"
+                                android:layout_margin="5dp"
+                                android:src="@drawable/pepsi" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+                <!--                    <ImageView-->
+                <!--                            android:id="@+id/profileImage"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="219dp"-->
+                <!--                            android:layout_gravity="center|top"-->
+                <!--                            app:layout_constraintBottom_toBottomOf="@+id/SelectPhoto"-->
+                <!--                            app:layout_constraintEnd_toEndOf="@+id/SelectPhoto"-->
+                <!--                            app:layout_constraintStart_toStartOf="@+id/SelectPhoto"-->
+                <!--                            app:layout_constraintTop_toTopOf="@+id/SelectPhoto" />-->
+
+
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                  android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableRight="@drawable/ic_info_black_24dp"
+                        android:drawablePadding="15dp"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:text="معلومات صاحب المحل"
+                        android:textSize="20sp"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/colorAccent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/nameUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:drawableRight="@drawable/ic_account_circle_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:textSize="20sp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:padding="10dp"
+                        android:text="jnxjn"
+                        android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/PhoneUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:backgroundTint="@color/white"
+                        android:layout_marginRight="20dp"
+                        android:drawableRight="@drawable/ic_call_white_24dp"
+                        android:drawablePadding="10dp"
+                        android:textSize="20sp"
+                        android:text="ueu"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:padding="10dp"
+                        android:textColor="@color/white"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/Email"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:layout_marginRight="20dp"
+                        android:drawableRight="@drawable/ic_email_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:textSize="20sp"
+                        android:text="ueu"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:padding="10dp"
+                        android:textColor="@color/white"/>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/progress"/>
 
 </FrameLayout>

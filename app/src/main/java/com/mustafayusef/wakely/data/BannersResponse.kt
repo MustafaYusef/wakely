@@ -1,11 +1,15 @@
 package com.mustafayusef.wakely.data
 
 data class BannersResponse(
-    val `data`: DataCategore,
+    val `data`: List<DataBanners>,
     val message: String,
     val success: Boolean
 )
 data class DataBanners(
-    val role: Int,
-    val token: String
+    val title: String,
+    val isActive: Boolean,
+    val _id:String,
+    val image:String,
+    val companyId:String
+
 )

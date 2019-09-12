@@ -1,11 +1,15 @@
 package com.mustafayusef.wakely.data
 
 data class ShopsResponse(
-    val `data`: DataCategore,
+    val `data`: List<shopData>,
     val message: String,
     val success: Boolean
 )
-data class DataShops(
-    val role: Int,
-    val token: String
+data class shopData(
+    val _id: String,
+    val image: String,
+    val isActive: Boolean,
+    val location: Location,
+    val phone: String,
+    val title: String
 )

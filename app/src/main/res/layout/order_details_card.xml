@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_section">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/title_back">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:fontFamily="@font/font_bold"
+                android:padding="5dp"
+                android:id="@+id/tileCompO"
+                android:text="اسم الشركة"
+                android:gravity="center"
+
+
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_assignment_black_24dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="1">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/font_bold"
+
+                    android:gravity="center"
+                    android:text="الكمية"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                     android:fontFamily="@font/font_regular"
+                    android:gravity="center"
+                    android:id="@+id/quantityO"
+                    android:text="15"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/statusO"
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/status_btn_accept"
+                    android:fontFamily="@font/font_bold"
+                    android:text="أنتظار"
+                    android:textColor="@color/green"
+                    android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/DescO"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableRight="@drawable/ic_info_black_24dp"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/font_regular"
+
+                    android:gravity="right|center"
+                    android:text="لا يوجد وصف"
+                    android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/PriceO"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:drawableRight="@drawable/ic_monetization_on_black_24dp"
+                    android:drawablePadding="5dp"
+
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="right|center"
+                    android:text="26000"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="26sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

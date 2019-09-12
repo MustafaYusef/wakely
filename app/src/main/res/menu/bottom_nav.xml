@@ -9,12 +9,17 @@
     >
 
     </item>
-    <item android:id="@+id/sections_fragment_fragment"
+    <item android:id="@+id/orders_fragment"
           android:icon="@drawable/ic_assignment_black_24dp"
           android:title="الطلبات">
 
     </item>
-    <item android:id="@+id/add_fragment"
+    <item android:id="@+id/nationalProd"
+            android:icon="@drawable/ic_shopping_basket_black_24dp"
+            android:title="الوطنية">
+
+    </item>
+    <item android:id="@+id/profile_fragment"
           android:icon="@drawable/ic_person_black_24dp"
           android:title="الحساب">
 

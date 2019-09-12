@@ -2,16 +2,21 @@ package com.mustafayusef.wakely.ui.compSection
 
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.DataCategore
+import com.mustafayusef.wakely.data.categoreResponse
+import kotlinx.android.synthetic.main.section_card.view.*
+import kotlinx.android.synthetic.main.slider_layout.view.*
 
 
-class SectionsAdapter(val context:Context,val data: DataCategore) : RecyclerView.Adapter<SectionsAdapter.CustomViewHolder>(){
+class SectionsAdapter(val context:Context,val data: categoreResponse) : RecyclerView.Adapter<SectionsAdapter.CustomViewHolder>(){
 //
  // private  var mOnNotlesener=onNoteLisener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -24,7 +29,7 @@ class SectionsAdapter(val context:Context,val data: DataCategore) : RecyclerView
 
     override fun getItemCount(): Int {
         // count=holidayFeed!!.count().toString()
-    return 5
+    return data.data.size
 
     }
 
@@ -41,9 +46,14 @@ class SectionsAdapter(val context:Context,val data: DataCategore) : RecyclerView
         //holder.view. OneContainer.startAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_in_list))
 
         // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
-
+       var data= data.data.get(position)
+        holder.view.secTitle.text=data.name
+        Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+data.image)
+            .into(  holder.view.circleImageViewSec)
         holder.view.setOnClickListener {
-            holder.view?.findNavController().navigate(R.id.productes)
+            var bundel=Bundle()
+            bundel.putString("secId",data._id)
+            holder.view?.findNavController().navigate(R.id.productes,bundel)
         }
 
 //        Glide.with(context).load("http://api.centralmarketiq.com/"+carsP.image+".png").into(holder.view?.numImage)

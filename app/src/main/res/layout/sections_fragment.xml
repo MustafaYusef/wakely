@@ -30,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:scaleType="fitXY"
+                android:id="@+id/imgSec"
                 android:src="@drawable/pepsi" />
         <TextView
                 android:layout_width="match_parent"
@@ -51,5 +52,5 @@
 
 
     </ScrollView>
-
+    <include layout="@layout/progress"/>
 </FrameLayout>

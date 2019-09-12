@@ -13,6 +13,7 @@ import com.mustafayusef.wakely.MainActivity
 
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.loginResponse
+import com.mustafayusef.wakely.data.profile.profile
 import com.mustafayusef.wakely.network.myApi
 import com.mustafayusef.wakely.ui.auth.AuthLesener
 import com.mustafayusef.wakely.ui.auth.AuthRepostary
@@ -21,6 +22,14 @@ import com.mustafayusef.wakely.ui.auth.AuthViewModelFactory
 import kotlinx.android.synthetic.main.login_fragment.*
 
 class login : Fragment(),AuthLesener {
+    override fun OnSuccessUpdate(response: loginResponse) {
+
+    }
+
+    override fun OnSuccessProfile(message: profile) {
+
+    }
+
     override fun OnStart() {
         context?.toast("start")
     }
@@ -31,6 +40,8 @@ class login : Fragment(),AuthLesener {
         MainActivity.cacheObj.role=response.data.role
           if(MainActivity.cacheObj.role==1){
               view?.findNavController()?.navigate(R.id.regesterShops)
+          }else if(MainActivity.cacheObj.role==0) {
+              view?.findNavController()?.navigate(R.id.main_fragment)
           }
 
     }
@@ -63,9 +74,13 @@ class login : Fragment(),AuthLesener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
        // viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
-        if(MainActivity.cacheObj.role==1){
+
+        if(MainActivity.cacheObj.role==1&&MainActivity.cacheObj.token!=""){
             view?.findNavController()?.navigate(R.id.regesterShops)
+        }else if(MainActivity.cacheObj.role==0&&MainActivity.cacheObj.token!=""){
+            view?.findNavController()?.navigate(R.id.main_fragment)
         }
+
         val networkIntercepter= context?.let { networkIntercepter(it) }
         val api= networkIntercepter?.let { myApi(it) }
         val repostary= AuthRepostary(api!!)

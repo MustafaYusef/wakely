@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context=".ui.Products.Cart">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sendOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+
+                    android:background="@drawable/round_btn"
+                    android:fontFamily="@font/font_bold"
+                    android:text="أرسال الطلب"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                  />
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/priceOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:background="@drawable/round_btn_border"
+                    android:fontFamily="@font/font_bold"
+                    android:text="200000 $"
+
+
+                    android:layout_marginRight="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="80dp"
+        android:id="@+id/cartItemsList"/>
+
+
+
+    <include layout="@layout/progress"/>
+
+</FrameLayout>

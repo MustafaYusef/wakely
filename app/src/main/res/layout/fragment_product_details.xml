@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.Products.productDetails.productDetails">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/storesSliderD"
+
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:background="@color/gray"
+                android:cropToPadding="true"
+                app:sliderAnimationDuration="300"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderCircularHandlerEnabled="false"
+                app:sliderIndicatorAnimationDuration="300"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="30dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="@color/colorAccent"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="false" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-25dp"
+                android:paddingTop="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/details_back">
+
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="right"
+                    android:text="title"
+                    android:id="@+id/prodTitleD"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_margin="10dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_bold"
+                        android:text="25000"
+                        android:id="@+id/priceDetails"
+                        android:paddingLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="26sp" />
+                <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:text="-"
+                        android:id="@+id/MinusBtn"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="26sp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/round_btn_pls"/>
+
+                <TextView
+                        android:id="@+id/numItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/font_bold"
+                        android:gravity="right"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/round_btn_pls"
+                        android:text="+"
+                        android:id="@+id/plusBtn"
+                        android:textColor="@color/white"
+                        android:textSize="26sp" />
+            </LinearLayout>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="right"
+                    android:text="معلومات المنتج"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="136dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="right"
+                    android:id="@+id/DetailsD"
+                    android:text="معلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتج"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="right"
+                    android:text="الحجم"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ListVolum"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:layout_centerVertical="true"
+                        />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+        <LinearLayout
+                android:id="@+id/AddBtnCart"
+                android:layout_width="308dp"
+                android:layout_height="55dp"
+                android:layout_gravity="bottom"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_btn"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+            <TextView
+                    android:id="@+id/totPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/font_bold"
+                    android:paddingLeft="5dp"
+                    android:text="25000"
+
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/font_bold"
+                    android:text="أضف للسلة"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+<!--            <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingRight="5dp"-->
+<!--                    android:src="@drawable/ic_shopping_cart_black_24dp" />-->
+
+        </LinearLayout>
+
+        <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="55dp"
+                android:background="@drawable/round_btn_border"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorAccent"
+                android:src="@drawable/ic_shopping_cart_black_24dp"
+                android:id="@+id/goToCart"
+                android:fontFamily="@font/font_bold"
+                android:textSize="20sp"/>
+    </LinearLayout>
+
+</LinearLayout>
+    </ScrollView>
+    <include layout="@layout/progress"/>
+</FrameLayout>

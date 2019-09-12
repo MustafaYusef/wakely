@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.utils.toast
+import com.mustafayusef.wakely.MainActivity
 
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.AddUserRes
@@ -18,35 +19,43 @@ import com.mustafayusef.wakely.ui.auth.AuthRepostary
 import com.mustafayusef.wakely.ui.auth.Delegate.DelegateLesener
 import com.mustafayusef.wakely.ui.auth.Delegate.RegShopsViewModelFactory
 import com.mustafayusef.wakely.ui.auth.Delegate.RegesterShopsViewModel
+import com.onesignal.OneSignal
+import kotlinx.android.synthetic.main.progress.*
 import kotlinx.android.synthetic.main.regester_shops_fragment.*
 
 class RegesterShops : Fragment(),DelegateLesener {
     override fun OnSuccessProv(response: provRes) {
-            context?.toast(response.toString())
+            //context?.toast(response.toString())
+        progLoading?.visibility=View.GONE
     }
 
     override fun OnSuccessCity(response: provRes) {
-
+        progLoading?.visibility=View.GONE
     }
 
     override fun OnStart() {
-        context?.toast("Start")
+        progLoading?.visibility=View.VISIBLE
     }
 
     override fun OnSuccess(response: AddUserRes) {
-        context?.toast(response.message.toString())
+        progLoading?.visibility=View.GONE
+       // context?.toast(response.message.toString())
         println(response)
         var bundel=Bundle()
         bundel.putString("UserId",response.data.id)
+        context?.toast(response.data.id)
         view?.findNavController()?.navigate(R.id.regesterShopsTow,bundel)
+
     }
 
     override fun onFailer(message: String) {
         context?.toast(message)
+        progLoading?.visibility=View.GONE
     }
 
     override fun onFailerNet(message: String) {
         context?.toast("مشكلة في الأتصال")
+        progLoading?.visibility=View.GONE
 
     }
 
@@ -88,20 +97,24 @@ class RegesterShops : Fragment(),DelegateLesener {
         val factory= RegShopsViewModelFactory(repostary)
         viewModel = ViewModelProviders.of(this,factory).get(RegesterShopsViewModel::class.java)
 
-        viewModel?.Auth=this
+        viewModel.Auth =this
         loginBtnReges?.setOnClickListener {
             if(nameReg?.text.toString().trim()!=""&&phoneReg?.text.toString().trim()!=""
                 &&passReg?.text.toString().trim()!=""){
                  name=nameReg?.text.toString()
                  phone=phoneReg?.text.toString()
                  pass=passReg?.text.toString()
-//                viewModel.AddUser( name ,phone ,pass,1)
-                view?.findNavController()?.navigate(R.id.regesterShopsTow)
-
-            }else{
-
+                context?.toast(phone)
+               viewModel.AddUser(MainActivity.cacheObj.token, name,pass ,phone ,0)
+               val playerId:String= OneSignal.getPermissionSubscriptionState().subscriptionStatus.userId
             }
-
+        }
+        LogOutBtn?.setOnClickListener {
+            MainActivity.cacheObj.apply {
+                token=""
+                role=-1
+            }
+            view?.findNavController()?.navigate(R.id.login)
         }
     }
 

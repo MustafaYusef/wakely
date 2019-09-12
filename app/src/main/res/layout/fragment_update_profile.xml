@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.auth.profile.UpdateProfile">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/circleImageViewU"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:layout_gravity="center|top"
+                            app:civ_border_color="@color/colorAccent"
+
+
+                            app:layout_constraintBottom_toBottomOf="@+id/SelectPhotoU"
+                            app:layout_constraintEnd_toEndOf="@+id/SelectPhotoU"
+                            app:layout_constraintStart_toStartOf="@+id/SelectPhoto"
+                            app:layout_constraintTop_toTopOf="@+id/SelectPhoto" />
+
+                    <Button
+                            android:id="@+id/SelectPhotoU"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/rounded_photo"
+                            android:text="تعديل الصورة"
+                            android:textColor="#fff"
+                            android:fontFamily="@font/font_bold"
+                            android:textSize="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/titleShopsU"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableRight="@drawable/ic_shopping_basket_gry_24dp"
+
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:hint="عنوان المحل"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/gray" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/nameShopU"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableRight="@drawable/ic_person_gray_24dp"
+                        android:drawablePadding="5dp"
+                        android:hint="أسم صاحب المحل"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/gray" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/phoneU"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/white"
+                        android:drawableRight="@drawable/ic_call_black_24dp"
+                        android:drawablePadding="5dp"
+                        android:hint="رقم المحل"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/gray" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/UpdateBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@drawable/round_btn"
+                        android:fontFamily="@font/font_bold"
+                        android:text="تحديث"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/progress"/>
+
+</FrameLayout>

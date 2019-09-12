@@ -47,4 +47,37 @@
             android:name="com.mustafayusef.wakely.ui.auth.Delegate.FormOne.RegesterShops"
             android:label="regester_shops_fragment"
             tools:layout="@layout/regester_shops_fragment" />
+    <fragment
+            android:id="@+id/orders_fragment"
+            android:name="com.mustafayusef.wakely.ui.orders.Orders"
+            android:label="orders_fragment"
+            tools:layout="@layout/orders_fragment" />
+    <fragment
+            android:id="@+id/profile_fragment"
+            android:name="com.mustafayusef.wakely.ui.auth.profile.profile"
+            android:label="profile_fragment"
+            tools:layout="@layout/profile_fragment" />
+    <fragment
+            android:id="@+id/productDetails"
+            android:name="com.mustafayusef.wakely.ui.Products.productDetails.productDetails"
+            android:label="fragment_product_details"
+            tools:layout="@layout/fragment_product_details" />
+    <fragment
+            android:id="@+id/cart"
+            android:name="com.mustafayusef.wakely.ui.Products.Cart"
+            android:label="fragment_cart"
+            tools:layout="@layout/fragment_cart" />
+    <fragment
+            android:id="@+id/updateProfile"
+            android:name="com.mustafayusef.wakely.ui.auth.profile.UpdateProfile"
+            android:label="fragment_update_profile"
+            tools:layout="@layout/fragment_update_profile" />
+    <fragment
+            android:id="@+id/detailsOrder"
+            android:name="com.mustafayusef.wakely.ui.orders.orderDetails.detailsOrder"
+            android:label="detailsOrder" />
+    <fragment
+            android:id="@+id/nationalProd"
+            android:name="com.mustafayusef.wakely.ui.Products.nationalProduct.nationalProd"
+            android:label="nationalProd" />
 </navigation>

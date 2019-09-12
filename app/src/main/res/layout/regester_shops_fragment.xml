@@ -84,6 +84,18 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/LogOutBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/round_btn"
+                android:fontFamily="@font/font_bold"
+                android:text="خروج"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
     </LinearLayout>
 </ScrollView>
+    <include layout="@layout/progress"/>
 </FrameLayout>

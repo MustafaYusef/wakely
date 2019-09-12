@@ -28,6 +28,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.utils.toast
+import com.mustafayusef.wakely.MainActivity
 
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.AddUserRes
@@ -39,6 +40,7 @@ import com.mustafayusef.wakely.ui.auth.Delegate.DelegateLesener
 import com.mustafayusef.wakely.ui.auth.Delegate.RegShopsViewModelFactory
 import com.mustafayusef.wakely.ui.auth.Delegate.RegesterShopsViewModel
 import kotlinx.android.synthetic.main.filters_dilog1.view.*
+import kotlinx.android.synthetic.main.progress.*
 import kotlinx.android.synthetic.main.regester_shops_fragment_tow.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -48,6 +50,7 @@ import java.io.File
 class RegesterShopsTow : Fragment(),DelegateLesener {
     override fun OnSuccessProv(response: provRes) {
         var ind=0
+        progLoading?.visibility=View.GONE
         resProv=response.data
         println("djccccccccjcjjcjj "+resProv)
         context?.toast("success  "+resProv.toString())
@@ -65,7 +68,7 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
 
     override fun OnSuccessCity(response: provRes) {
         var ind=0
-        context?.toast("success  ")
+        progLoading?.visibility=View.GONE
         resCity=response.data
         for(i in response.data){
             cities.add(ind,i.name)
@@ -75,19 +78,22 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
     }
 
     override fun OnStart() {
-    context?.toast("startttt  ")
+        progLoading?.visibility=View.VISIBLE
     }
 
     override fun OnSuccess(response: AddUserRes) {
-        context?.toast("success  ")
+        context?.toast(response.message)
+        progLoading?.visibility=View.GONE
     }
 
     override fun onFailer(message: String) {
         context?.toast(message)
+        progLoading?.visibility=View.GONE
     }
 
     override fun onFailerNet(message: String) {
         context?.toast(message)
+        progLoading?.visibility=View.GONE
     }
 
 
@@ -119,7 +125,8 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        var id=arguments!!.getString("UserId")
+        var id=arguments!!.getString("UserId")
+        context?.toast("tow "+id)
         val bottomNav = activity?.findViewById<com.google.android.material.bottomnavigation.BottomNavigationView> (R.id.bottomNav)
         val toolbar = activity?.findViewById<androidx.appcompat.widget.Toolbar> (R.id.ToolBar)
         view?.findNavController()?.addOnDestinationChangedListener { _, destination, _ ->
@@ -144,10 +151,10 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
 
         //viewModel.GetProv()
 
-        viewModel.GetProv()
+
         locationReg?.setOnClickListener {
             context?.toast("click  jfnjfdnknkjdnd")
-
+            viewModel.GetProv()
         }
 
         loginBtnRegTow?.setOnClickListener {
@@ -155,7 +162,7 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
             title=titleShops?.text.toString()
             phone= phoneRegTow?.text.toString()
             nearLocation=NearLoc?.text.toString()
-           // viewModel?.AddShops(title,phone,provinceId,cityId,nearLocation,imagesBodyRequest!!,id!!)
+            viewModel?.AddShops(MainActivity.cacheObj.token,title,phone,provinceId,cityId,nearLocation,imagesBodyRequest!!,id!!)
         }
     }
 
@@ -227,16 +234,17 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
             //mileFilter.text=selectMile
 
             index2=index
+            locationReg?.setText(array.get(index2).toString())
                provinceId=resProv?.get(index)!!._id!!
                 viewModel.GetCity(provinceId)
 
 
             malert?.dismiss()
         }
-        dview.closeDf.setOnClickListener {
-            malert?.dismiss()
-            index2=0
-        }
+//        dview.closeDf.setOnClickListener {
+//            malert?.dismiss()
+//            index2=0
+//        }
 
     }
     fun ShowCity(
@@ -264,13 +272,13 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
             //mileFilter.text=selectMile
 
              cityId= resCity?.get(index)?._id!!
-
+            locationReg?.append("/"+array.get(index).toString())
             malert?.dismiss()
         }
-        dview.closeDf.setOnClickListener {
-            malert?.dismiss()
-
-        }
+//        dview.closeDf.setOnClickListener {
+//            malert?.dismiss()
+//
+//        }
 
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -280,8 +288,6 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
         if (requestCode == 0 && resultCode == Activity.RESULT_OK
             && null != data
         ) {
-
-
                     var imageUri: Uri? = data.data
             val bitmap=MediaStore.Images.Media.getBitmap(context?.contentResolver,imageUri)
             // val bitmapDrawable= BitmapDrawable(bitmap)

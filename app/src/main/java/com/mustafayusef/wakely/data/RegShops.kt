@@ -7,8 +7,3 @@ data class RegShops(
     val title: String,
     val userId: String
 )
-data class Location(
-    val cityId: String,
-    val nearLocation: String,
-    val provinceId: String
-)

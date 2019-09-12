@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mustafayusef.wakely.R
+import com.mustafayusef.wakely.data.ShopsResponse
+import kotlinx.android.synthetic.main.store_comp_card.view.*
 
 
-
-class shopsAdapter(val context:Context ) : RecyclerView.Adapter<shopsAdapter.CustomViewHolder>(){
+class shopsAdapter(
+    val context: Context,
+    val shopsResponse: ShopsResponse
+) : RecyclerView.Adapter<shopsAdapter.CustomViewHolder>(){
 //
  // private  var mOnNotlesener=onNoteLisener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -24,7 +29,7 @@ class shopsAdapter(val context:Context ) : RecyclerView.Adapter<shopsAdapter.Cus
 
     override fun getItemCount(): Int {
         // count=holidayFeed!!.count().toString()
-    return 5
+    return shopsResponse.data.size
 
     }
 
@@ -34,7 +39,12 @@ class shopsAdapter(val context:Context ) : RecyclerView.Adapter<shopsAdapter.Cus
 
         // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
 
+        val comp=shopsResponse.data.get(position)
 
+        holder.view. storeTitle?.text=comp.title
+
+        Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+comp.image)
+            .into(holder.view?.storeImage)
 
 //        Glide.with(context).load("http://api.centralmarketiq.com/"+carsP.image+".png").into(holder.view?.numImage)
 

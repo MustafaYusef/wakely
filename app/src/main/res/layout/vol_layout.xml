@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+    <Button
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+           android:id="@+id/btn_volum"
+            android:layout_margin="5dp"
+            android:textSize="20sp"
+            android:text="xx"
+            android:textColor="@color/white"
+            android:background="@drawable/round_btn_black"/>
+
+</LinearLayout>

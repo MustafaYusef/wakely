@@ -15,10 +15,11 @@ class networkIntercepter(context: Context):Interceptor {
         if (!isNetworkAvilable()){
          throw noInternetExeption("ther is no internet connection")
         }
-        return chain.proceed(chain.request().newBuilder()
-            .addHeader("Connection", "close")
-            .addHeader("Transfer-Encoding", "chunked")
-            .build())
+        return chain.proceed(chain.request())
+//            .newBuilder()
+//            .addHeader("Connection", "close")
+//            .addHeader("Transfer-Encoding", "chunked")
+//            .build())
     }
     fun isNetworkAvilable():Boolean{
         val connectivityManager = appcontext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

@@ -5,16 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import android.graphics.Color
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.wakely.R
+import com.mustafayusef.wakely.data.BannersResponse
+import com.mustafayusef.wakely.data.ShopsResponse
+import com.mustafayusef.wakely.data.disscountCompany
 import com.smarteist.autoimageslider.SliderView
 import kotlinx.android.synthetic.main.first_banners.view.*
 import kotlinx.android.synthetic.main.shops_list.view.*
 
 class MainScreenAdapter(
-    val context: Context, var onNoteLisener: OnNoteLisener
+    val context: Context, val response: BannersResponse,
+    val shopsResponse: ShopsResponse,
+    val companyResponse: ShopsResponse,
+    val disscountResponse: disscountCompany
+    , var onNoteLisener: OnNoteLisener
 ) : RecyclerView.Adapter<MainScreenAdapter.CustomViewHolder>(){
 //
   private  var mOnNotlesener=onNoteLisener
@@ -56,7 +62,7 @@ class MainScreenAdapter(
         // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
       if(position==0){
           //animation_loadingMain?.visibility=View.GONE
-          val adapter = bannersAdapter(context!!)
+          val adapter = bannersAdapter(context!!,response)
 
           holder.view.storesSlider?.sliderAdapter = adapter
 
@@ -71,17 +77,17 @@ class MainScreenAdapter(
       }
         else if(position==1){
           holder.view.shopsList?.layoutManager= LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
-          holder.view.shopsList?.adapter=companyAdapter(context)
+          holder.view.shopsList?.adapter=companyAdapter(context,companyResponse)
           holder.view.titleCom?.text="الشركات"
       }
       else if(position==2){
           holder.view.shopsList?.layoutManager= LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
-          holder.view.shopsList?.adapter=shopsAdapter(context)
+          holder.view.shopsList?.adapter=shopsAdapter(context,shopsResponse)
           holder.view.titleCom?.text="المحلات"
       }
       else if(position==3){
           holder.view.shopsList?.layoutManager= LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
-          holder.view.shopsList?.adapter=spicialAdapter(context)
+          holder.view.shopsList?.adapter=spicialAdapter(context,disscountResponse)
           holder.view.titleCom?.text="العروض"
       }
 

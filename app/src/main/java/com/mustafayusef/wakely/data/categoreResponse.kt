@@ -1,11 +1,16 @@
 package com.mustafayusef.wakely.data
 
+import android.media.Image
+
 data class categoreResponse(
-    val `data`: DataCategore,
+    val `data`: List<DataCategore>,
     val message: String,
     val success: Boolean
 )
 data class DataCategore(
-    val role: Int,
-    val token: String
+     val isActive:Boolean,
+     val _id:String,
+     val name:String,
+     val image: String
+
 )

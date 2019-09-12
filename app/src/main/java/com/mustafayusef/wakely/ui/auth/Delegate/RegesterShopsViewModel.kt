@@ -13,12 +13,12 @@ import java.net.SocketTimeoutException
 class RegesterShopsViewModel(val repostary: AuthRepostary) : ViewModel() {
     var Auth: DelegateLesener?=null
 
-   fun AddUser(name:String,password:String,phone:String,role:Int){
+   fun AddUser(token:String,name:String,password:String,phone:String,role:Int){
        Auth?.OnStart()
 
        corurtins.main {
            try {
-               val CarsDetailsResponse=repostary.AddUser(name,password,phone,role)
+               val CarsDetailsResponse=repostary.AddUser(token,name,password,phone,role)
                CarsDetailsResponse ?.let {it1->
 
                    Auth?.OnSuccess(it1)
@@ -40,13 +40,13 @@ class RegesterShopsViewModel(val repostary: AuthRepostary) : ViewModel() {
        }
    }
 
-    fun AddShops(title:String,phone:String,provinceId:String
+    fun AddShops(token:String,title:String,phone:String,provinceId:String
                  ,cityId:String,nearLocation:String,imagesBodyRequest:MultipartBody.Part,id:String){
         Auth?.OnStart()
 
         corurtins.main {
             try {
-                val CarsDetailsResponse=repostary.AddShops(title,phone,provinceId
+                val CarsDetailsResponse=repostary.AddShops(token,title,phone,provinceId
                     ,cityId,nearLocation,imagesBodyRequest,id)
                 CarsDetailsResponse ?.let {it1->
 
@@ -76,10 +76,10 @@ class RegesterShopsViewModel(val repostary: AuthRepostary) : ViewModel() {
             try {
                 val CarsDetailsResponse=repostary.GetProv()
                 CarsDetailsResponse ?.let {it1->
-
+                    println("resssssssssssssssss  "+it1)
                     Auth?.OnSuccessProv(it1)
                 }
-
+                println("resssssssssssssssss  "+CarsDetailsResponse)
             }catch (e: ApiExaptions){
                 e.message?.let { Auth?.onFailer(it) }
 

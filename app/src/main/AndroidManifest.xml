@@ -14,7 +14,8 @@
             android:roundIcon="@drawable/main_icon"
             android:supportsRtl="true"
             android:usesCleartextTraffic="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:name=".myApp">
 
         <activity android:name=".ui.splash.splashScreen">
             <intent-filter>

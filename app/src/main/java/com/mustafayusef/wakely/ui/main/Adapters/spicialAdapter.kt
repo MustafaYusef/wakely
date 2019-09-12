@@ -10,10 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 import com.mustafayusef.wakely.R
+import com.mustafayusef.wakely.data.disscountCompany
+import kotlinx.android.synthetic.main.store_comp_card.view.*
 
 
-
-class spicialAdapter(val context:Context ) : RecyclerView.Adapter<spicialAdapter.CustomViewHolder>(){
+class spicialAdapter(
+    val context: Context,
+    val disscountResponse: disscountCompany
+) : RecyclerView.Adapter<spicialAdapter.CustomViewHolder>(){
 //
  // private  var mOnNotlesener=onNoteLisener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -27,7 +31,7 @@ class spicialAdapter(val context:Context ) : RecyclerView.Adapter<spicialAdapter
 
     override fun getItemCount(): Int {
         // count=holidayFeed!!.count().toString()
-    return 5
+    return disscountResponse.data.size
 
     }
 
@@ -37,7 +41,12 @@ class spicialAdapter(val context:Context ) : RecyclerView.Adapter<spicialAdapter
 
         // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
 
+        val comp=disscountResponse.data.get(position)
 
+        holder.view. storeTitle?.text=comp.company.title
+        holder.view.discStore.text=comp.discountPercentage.toString()
+        Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+comp.image)
+            .into(holder.view?.storeImage)
 
 //        Glide.with(context).load("http://api.centralmarketiq.com/"+carsP.image+".png").into(holder.view?.numImage)
 

@@ -89,7 +89,7 @@
                 android:textSize="22sp" />
     </LinearLayout>
 
-
+    <include layout="@layout/progress"/>
 
 
 </FrameLayout>

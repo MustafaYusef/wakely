@@ -106,7 +106,9 @@ class RegesterShops : Fragment(),DelegateLesener {
                  pass=passReg?.text.toString()
                 context?.toast(phone)
                viewModel.AddUser(MainActivity.cacheObj.token, name,pass ,phone ,0)
-               val playerId:String= OneSignal.getPermissionSubscriptionState().subscriptionStatus.userId
+
+            }else{
+                context?.toast("أكمل جميع الحقول")
             }
         }
         LogOutBtn?.setOnClickListener {

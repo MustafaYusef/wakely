@@ -7,6 +7,7 @@ import com.mustafayusef.wakely.data.BannersResponse
 import com.mustafayusef.wakely.data.ShopsResponse
 import com.mustafayusef.wakely.data.disscountCompany
 import com.mustafayusef.wakely.utils.corurtins
+import java.net.ConnectException
 import java.net.ProtocolException
 import java.net.SocketException
 import java.net.SocketTimeoutException
@@ -22,6 +23,7 @@ class MainScreenViewModel(val repostary: MainRepostary) : ViewModel() {
         var bannerResponse:BannersResponse?=null
         var DisscountResponse:disscountCompany?=null
         Auth?.OnStart()
+
 
         corurtins.main {
             try {
@@ -59,9 +61,72 @@ class MainScreenViewModel(val repostary: MainRepostary) : ViewModel() {
                 e.message?.let { Auth?.onFailerNet(it) }
             }catch (e: ProtocolException){
                 e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
             }
 
         }
 
     }
+
+    fun GetAllShops(){
+        Auth?.OnStart()
+
+        corurtins.main {
+            try {
+              var  ShopsResponse=repostary.getShops(0,0)
+                ShopsResponse ?.let {
+
+                    Auth?.onSuccessAll(ShopsResponse!!)
+                }
+
+            }catch (e: ApiExaptions){
+                e.message?.let { Auth?.onFailer(it) }
+
+            }catch (e: noInternetExeption){
+                e.message?.let { Auth?.onFailerNet(it) }
+            } catch (e: SocketTimeoutException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            } catch (e: SocketException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e: ProtocolException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }
+
+        }
+
+    }
+
+    fun GetAllCompany(){
+        Auth?.OnStart()
+
+        corurtins.main {
+            try {
+                var  ShopsResponse=repostary.getCompany(0,0)
+                ShopsResponse ?.let {
+
+                    Auth?.onSuccessAllComp(ShopsResponse!!)
+                }
+
+            }catch (e: ApiExaptions){
+                e.message?.let { Auth?.onFailer(it) }
+
+            }catch (e: noInternetExeption){
+                e.message?.let { Auth?.onFailerNet(it) }
+            } catch (e: SocketTimeoutException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            } catch (e: SocketException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e: ProtocolException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }
+
+        }
+
+    }
+
 }

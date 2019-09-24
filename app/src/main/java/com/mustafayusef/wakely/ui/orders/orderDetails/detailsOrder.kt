@@ -1,23 +1,15 @@
 package com.mustafayusef.wakely.ui.orders.orderDetails
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.wakely.MainActivity
 
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.order.Data
-import com.mustafayusef.wakely.network.myApi
-import com.mustafayusef.wakely.ui.orders.OrdersRepostary
-import com.mustafayusef.wakely.ui.orders.OrdersViewModel
-import com.mustafayusef.wakely.ui.orders.OrdersViewModelFactory
 import kotlinx.android.synthetic.main.orders_fragment.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,6 +32,16 @@ class detailsOrder : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val itemComp= activity?.findViewById<View>(R.id.ordersCompany)
+        val item= activity?.findViewById<View>(R.id.orders_fragment)
+        if(MainActivity.cacheObj.role!=2){
+            item?.visibility=View.VISIBLE
+            itemComp?.visibility=View.GONE
+        }else{
+            item?.visibility=View.GONE
+            itemComp?.visibility=View.VISIBLE
+        }
+
 
         var orders=arguments!!.getSerializable("orders") as Data
 

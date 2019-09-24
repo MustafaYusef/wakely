@@ -6,6 +6,7 @@ import com.mustafayusef.holidaymaster.utils.noInternetExeption
 import com.mustafayusef.wakely.ui.auth.AuthRepostary
 import com.mustafayusef.wakely.utils.corurtins
 import okhttp3.MultipartBody
+import java.net.ConnectException
 import java.net.ProtocolException
 import java.net.SocketException
 import java.net.SocketTimeoutException
@@ -34,6 +35,8 @@ class RegesterShopsViewModel(val repostary: AuthRepostary) : ViewModel() {
            catch (e: SocketException){
                e.message?.let { Auth?.onFailerNet(it) }
            }catch (e: ProtocolException){
+               e.message?.let { Auth?.onFailerNet(it) }
+           }catch (e: ConnectException){
                e.message?.let { Auth?.onFailerNet(it) }
            }
 
@@ -64,6 +67,8 @@ class RegesterShopsViewModel(val repostary: AuthRepostary) : ViewModel() {
                 e.message?.let { Auth?.onFailerNet(it) }
             }catch (e: ProtocolException){
                 e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
             }
 
         }
@@ -91,6 +96,8 @@ class RegesterShopsViewModel(val repostary: AuthRepostary) : ViewModel() {
                 e.message?.let { Auth?.onFailerNet(it) }
             }catch (e: ProtocolException){
                 e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
             }
 
         }
@@ -116,6 +123,8 @@ class RegesterShopsViewModel(val repostary: AuthRepostary) : ViewModel() {
             catch (e: SocketException){
                 e.message?.let { Auth?.onFailerNet(it) }
             }catch (e: ProtocolException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
                 e.message?.let { Auth?.onFailerNet(it) }
             }
 

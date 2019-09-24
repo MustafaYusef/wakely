@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
+import com.mustafayusef.wakely.MainActivity
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.cart.Cart
 import com.mustafayusef.wakely.data.nationalProduct.National
@@ -54,6 +55,16 @@ class nationalProd : Fragment(),NationalLesener {
  var viewModel:ProductesViewModel?=null
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val itemComp= activity?.findViewById<View>(R.id.ordersCompany)
+        val item= activity?.findViewById<View>(R.id.orders_fragment)
+        if(MainActivity.cacheObj.role!=2){
+            item?.visibility=View.VISIBLE
+            itemComp?.visibility=View.GONE
+        }else{
+            item?.visibility=View.GONE
+            itemComp?.visibility=View.VISIBLE
+        }
+
 
         val networkIntercepter= context?.let { networkIntercepter(it) }
         val api= networkIntercepter?.let { myApi(it) }

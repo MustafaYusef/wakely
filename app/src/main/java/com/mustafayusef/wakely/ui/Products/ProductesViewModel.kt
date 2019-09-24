@@ -5,6 +5,7 @@ import com.mustafayusef.holidaymaster.utils.ApiExaptions
 import com.mustafayusef.holidaymaster.utils.noInternetExeption
 import com.mustafayusef.wakely.ui.Products.nationalProduct.NationalLesener
 import com.mustafayusef.wakely.utils.corurtins
+import java.net.ConnectException
 import java.net.ProtocolException
 import java.net.SocketException
 import java.net.SocketTimeoutException
@@ -35,12 +36,47 @@ class ProductesViewModel(val repostary: ProductRepostary) : ViewModel() {
                 e.message?.let { Auth?.onFailerNet(it) }
             } catch (e: ProtocolException) {
                 e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e: ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
             }
 
         }
 
 
     }
+
+    fun getDisscountProducts(id: String) {
+        Auth?.OnStart()
+
+        corurtins.main {
+            try {
+                val CarsDetailsResponse = repostary.getDisscountProducts(id)
+                CarsDetailsResponse?.let { it1 ->
+
+                    Auth?.OnSuccessDisscount(it1)
+                }
+
+            } catch (e: ApiExaptions) {
+                e.message?.let { Auth?.onFailer(it) }
+
+            } catch (e: noInternetExeption) {
+                e.message?.let { Auth?.onFailerNet(it) }
+            } catch (e: SocketTimeoutException) {
+                e.message?.let { Auth?.onFailerNet(it) }
+            } catch (e: SocketException) {
+                e.message?.let { Auth?.onFailerNet(it) }
+            } catch (e: ProtocolException) {
+                e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }
+
+        }
+
+
+    }
+
+
 
     fun AddToCart(
         token: String, productId: String, quantity: Int, companyId: String,
@@ -67,6 +103,8 @@ class ProductesViewModel(val repostary: ProductRepostary) : ViewModel() {
                 e.message?.let { Auth?.onFailerNet(it) }
             } catch (e: ProtocolException) {
                 e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
             }
 
         }
@@ -92,6 +130,8 @@ class ProductesViewModel(val repostary: ProductRepostary) : ViewModel() {
                 e.message?.let { Auth?.onFailerNet(it) }
             } catch (e: ProtocolException) {
                 e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
             }
         }
     }
@@ -114,6 +154,8 @@ class ProductesViewModel(val repostary: ProductRepostary) : ViewModel() {
             } catch (e: SocketException) {
                 e.message?.let { Auth?.onFailerNet(it) }
             } catch (e: ProtocolException) {
+                e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
                 e.message?.let { Auth?.onFailerNet(it) }
             }
         }
@@ -138,7 +180,11 @@ class ProductesViewModel(val repostary: ProductRepostary) : ViewModel() {
                 e.message?.let { AuthNational?.onFailerNet(it) }
             } catch (e: ProtocolException) {
                 e.message?.let { AuthNational?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
             }
         }
     }
+
+
 }

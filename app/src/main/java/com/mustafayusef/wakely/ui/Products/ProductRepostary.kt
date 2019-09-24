@@ -16,6 +16,13 @@ class ProductRepostary(val api: myApi): SafeApiRequest(){
         return SafeRequest{
             api.getProduct(token,SecId,pageNum,Num)
         }}
+
+    suspend fun getDisscountProducts(id:String): productsResponse {
+
+        return SafeRequest{
+            api.getDisscountProducts(id)
+        }}
+
     suspend fun AddToCart(token:String,productId:String,quantity:Int,companyId:String,
                           priceId:String): productsResponse {
              var add=AddItem(productId=productId,quantity = quantity,companyId = companyId,
@@ -34,6 +41,7 @@ class ProductRepostary(val api: myApi): SafeApiRequest(){
         return SafeRequest{
             api.sendOrder(token)
         }}
+
     suspend fun GetOrdersHistory(token:String): ordersRes {
 
         return SafeRequest{

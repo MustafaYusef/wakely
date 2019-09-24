@@ -29,7 +29,8 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+
+            android:layoutDirection="ltr"
             android:orientation="horizontal"
             android:padding="5dp"
             android:weightSum="1">
@@ -68,7 +69,7 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/status_btn_accept"
                     android:fontFamily="@font/font_bold"
-                    android:text="أنتظار"
+                    android:text="مقبول"
                     android:textColor="@color/green"
                     android:textSize="16sp" />
         </LinearLayout>

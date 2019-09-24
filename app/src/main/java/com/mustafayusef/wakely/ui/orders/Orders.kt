@@ -33,6 +33,8 @@ class Orders : Fragment(),OrdersLesener {
         progLoading?.visibility=View.GONE
     }
 
+
+
     override fun OnSuccessGetOrders(message: ordersRes) {
         ordersList?.layoutManager=LinearLayoutManager(context)
         ordersList?.adapter=ordersAdapter(context!!,message.data)
@@ -63,4 +65,16 @@ class Orders : Fragment(),OrdersLesener {
         viewModel.getOrdersHistory(MainActivity.cacheObj.token)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val itemComp= activity?.findViewById<View>(R.id.ordersCompany)
+        val item= activity?.findViewById<View>(R.id.orders_fragment)
+        if(MainActivity.cacheObj.role!=2){
+            item?.visibility=View.VISIBLE
+            itemComp?.visibility=View.GONE
+        }else{
+            item?.visibility=View.GONE
+            itemComp?.visibility=View.VISIBLE
+        }
+    }
 }

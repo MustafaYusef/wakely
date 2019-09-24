@@ -2,13 +2,14 @@ package com.mustafayusef.wakely.ui.orders.orderDetails
 
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.order.Order
-import kotlinx.android.synthetic.main.order_card.view.*
 import kotlinx.android.synthetic.main.order_details_card.view.*
 
 
@@ -39,7 +40,7 @@ class ordersDetailsAdapter(
 
         // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
        var data=response .get(position)
-        holder.view. tileCompO.text="اسم الشركة"
+        holder.view. tileCompO.text=data.companyDetails.title
         holder.view.PriceO.text=data.price  .toString()+" $"
        // holder.view.dayNum.
         holder.view.quantityO.text=data.totalQuantities .toString()
@@ -47,9 +48,16 @@ class ordersDetailsAdapter(
         if(data.status==0){
             holder.view. statusO.setBackgroundResource(R.drawable.status_btn_waiting)
             holder.view. statusO.setTextColor(context.resources .getColor(R.color.yellow))
+            holder.view. statusO.text="أنتضار"
         }else if(data.status==2){
             holder.view. statusO.setBackgroundResource(R.drawable.status_btn_refuse)
             holder.view. statusO.setTextColor(context.resources .getColor(R.color.red))
+            holder.view. statusO.text="مرفوض"
+        }
+        holder.view.setOnClickListener {
+            var bundel=Bundle()
+            bundel.putSerializable("products",data)
+            holder.view.findNavController()?.navigate(R.id.orderProduct,bundel)
         }
 
 //        Glide.with(context).load("http://api.centralmarketiq.com/"+carsP.image+".png").into(holder.view?.numImage)

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+
+            android:orientation="vertical"
+            android:background="@drawable/back_profile"
+            >
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                <ImageView
+                        android:id="@+id/EditeBtn"
+                        android:layout_width="35dp"
+                        android:layout_height="33dp"
+                        android:layout_gravity="right|top"
+                        android:layout_margin="10dp"
+                        android:visibility="invisible"
+
+                        android:src="@drawable/ic_edit_black_24dp" />
+
+            </LinearLayout>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/font_bold"
+                    android:text="معلومات المحل"
+                    android:layout_weight="1"/>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="right"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:id="@+id/logOut"
+                        android:visibility="invisible"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="right|top"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/ic_exit_to_app_black_24dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layoutDirection="ltr"
+                >
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:layout_weight="1">
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/titleShopsO"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_shopping_basket_black_24dp"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:textSize="18sp"
+                        android:text="mdkd"
+                        android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/locationRegO"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_location_on_white_24dp"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:textSize="18sp"
+                        android:text="mdkd"
+                        android:textColor="@color/white" />
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/phoneShopO"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_call_white_24dp"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="right|center"
+                        android:textSize="18sp"
+                        android:text="mdkd"
+                        android:textColor="@color/white" />
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                <ImageView
+                        android:id="@+id/ShopImageO"
+                        android:layout_width="120dp"
+                        android:layout_height="100dp"
+
+                        android:layout_margin="5dp"
+                        android:src="@drawable/pepsi" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+            android:weightSum="2">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/TotalPriceO"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/font_bold"
+                android:text="25000 $"
+                android:layout_weight="1"
+                android:textColor="@color/green"
+                android:textSize="26sp" />
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:layout_marginRight="20dp"
+                android:drawableRight="@drawable/ic_monetization_on_black_24dp"
+                android:drawablePadding="10dp"
+                android:textSize="24sp"
+                android:layout_weight="1"
+                android:text="السعر الكلي"
+                android:fontFamily="@font/font_bold"
+                android:gravity="right|center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:layout_height="1dp"/>
+</LinearLayout>

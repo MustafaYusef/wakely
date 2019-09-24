@@ -9,14 +9,20 @@
     >
 
     </item>
-    <item android:id="@+id/orders_fragment"
-          android:icon="@drawable/ic_assignment_black_24dp"
-          android:title="الطلبات">
+    <item android:id="@+id/cart"
+          android:icon="@drawable/ic_shopping_cart_black_24dp"
+          android:title="السلة">
 
     </item>
+<!--    <item android:id="@+id/orders_fragment"-->
+
+<!--            android:icon="@drawable/ic_assignment_black_24dp"-->
+<!--            android:title="الطلبات">-->
+
+<!--    </item>-->
     <item android:id="@+id/nationalProd"
-            android:icon="@drawable/ic_shopping_basket_black_24dp"
-            android:title="الوطنية">
+            android:icon="@drawable/national"
+            android:title="مواد محلية">
 
     </item>
     <item android:id="@+id/profile_fragment"

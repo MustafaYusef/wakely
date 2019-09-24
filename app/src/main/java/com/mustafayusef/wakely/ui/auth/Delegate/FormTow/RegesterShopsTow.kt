@@ -62,7 +62,7 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
         if(!province.isNullOrEmpty()){
             ShowProv(province as ArrayList<String>)
         }else{
-            context?.toast("nullllllllllllll")
+            //context?.toast("nullllllllllllll")
         }
     }
 
@@ -82,8 +82,9 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
     }
 
     override fun OnSuccess(response: AddUserRes) {
-        context?.toast(response.message)
+        context?.toast("تم تسجيل المحل بنجاح")
         progLoading?.visibility=View.GONE
+        view?.findNavController()?.navigate(R.id.regesterShops)
     }
 
     override fun onFailer(message: String) {
@@ -158,18 +159,22 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
         }
 
         loginBtnRegTow?.setOnClickListener {
-
             title=titleShops?.text.toString()
             phone= phoneRegTow?.text.toString()
             nearLocation=NearLoc?.text.toString()
-            viewModel?.AddShops(MainActivity.cacheObj.token,title,phone,provinceId,cityId,nearLocation,imagesBodyRequest!!,id!!)
+            if(!title.isNullOrEmpty()&&
+                !phone.isNullOrEmpty()&&
+               !nearLocation.isNullOrEmpty()&& imagesBodyRequest!=null){
+                viewModel?.AddShops(MainActivity.cacheObj.token,title,phone,provinceId,cityId,nearLocation,imagesBodyRequest!!,id!!)
+            }else{
+                context?.toast("أكمل جميع الحقول")
+            }
+
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         SelectPhoto?.setOnClickListener {
             if (Build.VERSION.SDK_INT < 19) {

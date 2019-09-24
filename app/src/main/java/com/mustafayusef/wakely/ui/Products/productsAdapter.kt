@@ -50,7 +50,7 @@ class productsAdapter(
 
         holder.view.prodTitle.text=data.title
         holder.view.priceProd.text= data?.productPrices[0]!!.price.toString()!!
-        Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+
+        Glide.with(context).load("http://api.alwakiel.com/storage/images/"+
                 data.productPrices[0].image)
             .into(  holder.view.circleImageViewProd)
         holder.view.setOnClickListener {

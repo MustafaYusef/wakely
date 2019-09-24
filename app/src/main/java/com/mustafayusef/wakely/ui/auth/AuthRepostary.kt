@@ -11,8 +11,8 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 class AuthRepostary(val api: myApi): SafeApiRequest(){
-    suspend fun Login(phone:String,password:String):loginResponse{
-        var log=LoginBody(phone=phone,password = password)
+    suspend fun Login(phone:String,password:String,playerId:String):loginResponse{
+        var log=LogIn(phone=phone,password = password,playerId=playerId)
         return SafeRequest{
             api.Login(log)
         }}
@@ -75,10 +75,15 @@ data class addUserBody(
     var role:Int
 
 )
+data class LogIn(
+    var phone:String,
+    var password:String,
+    var playerId:String
+
+)
 data class location(
     var provinceId: RequestBody,
     var cityId:RequestBody,
     var nearLocation:RequestBody
-
 
 )

@@ -6,18 +6,19 @@ import com.mustafayusef.holidaymaster.utils.noInternetExeption
 import com.mustafayusef.wakely.utils.corurtins
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import java.net.ConnectException
 import java.net.ProtocolException
 import java.net.SocketException
 import java.net.SocketTimeoutException
 
 class AuthViewModel(val repostary: AuthRepostary) : ViewModel() {
    var Auth:AuthLesener?=null
-     fun Login(phone:String,password:String){
+     fun Login(phone:String,password:String,playerId:String){
             Auth?.OnStart()
 
             corurtins.main {
                 try {
-                    val CarsDetailsResponse=repostary.Login(phone,password)
+                    val CarsDetailsResponse=repostary.Login(phone,password,playerId)
                     CarsDetailsResponse ?.let {it1->
 
                         Auth?.OnSuccess(it1)
@@ -33,6 +34,8 @@ class AuthViewModel(val repostary: AuthRepostary) : ViewModel() {
                 catch (e: SocketException){
                     e.message?.let { Auth?.onFailerNet(it) }
                 }catch (e: ProtocolException){
+                    e.message?.let { Auth?.onFailerNet(it) }
+                }catch (e: ConnectException){
                     e.message?.let { Auth?.onFailerNet(it) }
                 }
 
@@ -62,6 +65,8 @@ class AuthViewModel(val repostary: AuthRepostary) : ViewModel() {
                 e.message?.let { Auth?.onFailerNet(it) }
             }catch (e: ProtocolException){
                 e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
+                e.message?.let { Auth?.onFailerNet(it) }
             }
 
         }
@@ -90,6 +95,8 @@ class AuthViewModel(val repostary: AuthRepostary) : ViewModel() {
             catch (e: SocketException){
                 e.message?.let { Auth?.onFailerNet(it) }
             }catch (e: ProtocolException){
+                e.message?.let { Auth?.onFailerNet(it) }
+            }catch (e:ConnectException){
                 e.message?.let { Auth?.onFailerNet(it) }
             }
 

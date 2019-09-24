@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.utils.toast
@@ -25,11 +26,15 @@ import kotlinx.android.synthetic.main.progress.*
 import java.lang.Exception
 
 class Cart : Fragment(),productLesener {
+    override fun OnSuccessDisscount(message: productsResponse) {
+
+    }
 
 
     override fun OnSuccessSend(message: productsResponse) {
-        context?.toast(message.message)
+        context?.toast("طلبك قيد المراجعة")
         progLoading?.visibility=View.GONE
+        view?.findNavController()?.navigate(R.id.orders_fragment)
     }
 
     override fun OnStart() {
@@ -54,10 +59,15 @@ class Cart : Fragment(),productLesener {
     }
 
     override fun OnSuccessGetCart(message: Cart) {
+        if(!message.data.isNullOrEmpty()){
+            orderCart?.visibility=View.VISIBLE
+        }else{
+            nothing?.visibility=View.VISIBLE
+        }
         cartItemsList?.layoutManager=LinearLayoutManager(context)
         cartItemsList?.adapter=CartAdapter(context!!,message.data)
         progLoading?.visibility=View.GONE
-
+        priceOrder?.text=message.data[0].totalPrice.toString()
     }
 
 
@@ -71,6 +81,9 @@ class Cart : Fragment(),productLesener {
   var viewModel:ProductesViewModel?=null
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        if(MainActivity.cacheObj.role==2){
+            view?.findNavController()?.navigate(R.id.ordersCompany)
+        }
         val networkIntercepter= context?.let { networkIntercepter(it) }
         val api= networkIntercepter?.let { myApi(it) }
         val repostary= ProductRepostary(api!!)
@@ -89,6 +102,17 @@ class Cart : Fragment(),productLesener {
         }
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val itemComp= activity?.findViewById<View>(R.id.ordersCompany)
+        val item= activity?.findViewById<View>(R.id.orders_fragment)
+        if(MainActivity.cacheObj.role!=2){
+            item?.visibility=View.VISIBLE
+            itemComp?.visibility=View.GONE
+        }else{
+            item?.visibility=View.GONE
+            itemComp?.visibility=View.VISIBLE
+        }
+    }
 
 }

@@ -41,9 +41,13 @@ class shopsAdapter(
 
         val comp=shopsResponse.data.get(position)
 
-        holder.view. storeTitle?.text=comp.title
-
-        Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+comp.image)
+        if(comp.title.length>14){
+            holder.view. storeTitle?.text=comp.title.subSequence(0,13).toString()+".."
+        }else{
+            holder.view. storeTitle?.text=comp.title
+        }
+        holder.view.discStore.visibility=View.GONE
+        Glide.with(context).load("http://api.alwakiel.com/storage/images/"+comp.image)
             .into(holder.view?.storeImage)
 
 //        Glide.with(context).load("http://api.centralmarketiq.com/"+carsP.image+".png").into(holder.view?.numImage)

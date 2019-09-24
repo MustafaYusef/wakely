@@ -24,6 +24,11 @@ import kotlinx.android.synthetic.main.productes_fragment.*
 import kotlinx.android.synthetic.main.progress.*
 
 class productes : Fragment(),productLesener {
+    override fun OnSuccessDisscount(message: productsResponse) {
+        productList?.layoutManager=LinearLayoutManager(context!!)
+        productList?.adapter=productsAdapter(context!!,message)
+        progLoading?.visibility=View.GONE
+    }
 
 
     override fun OnSuccessSend(message: productsResponse) {
@@ -69,21 +74,28 @@ class productes : Fragment(),productLesener {
         return inflater.inflate(R.layout.productes_fragment, container, false)
     }
 
+    var flage=false
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
 
-
+        flage= arguments?.getBoolean("flage")!!
         var id=arguments!!.getString("secId")
 //        viewModel = ViewModelProviders.of(this).get(ProductesViewModel::class.java)
 
+        titSec?.text=arguments!!.getString("name")
         val networkIntercepter= context?.let { networkIntercepter(it) }
         val api= networkIntercepter?.let { myApi(it) }
         val repostary= ProductRepostary(api!!)
         val factory= ProductViewModelFactory(repostary)
         viewModel = ViewModelProviders.of(this,factory).get(ProductesViewModel::class.java)
         viewModel?.Auth=this
-        viewModel?.getProduct(MainActivity.cacheObj.token,id!!,0,0)
+        if(flage){
+            viewModel?.getDisscountProducts(id!!)
+        }else{
+            viewModel?.getProduct(MainActivity.cacheObj.token,id!!,0,0)
+        }
+
         val toolbar = activity?.findViewById<androidx.appcompat.widget.Toolbar> (R.id.ToolBar)
         view?.findNavController()?.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.productes) {
@@ -95,7 +107,15 @@ class productes : Fragment(),productLesener {
             }
         }
 
-
+        val itemComp= activity?.findViewById<View>(R.id.ordersCompany)
+        val item= activity?.findViewById<View>(R.id.orders_fragment)
+        if(MainActivity.cacheObj.role!=2){
+            item?.visibility=View.VISIBLE
+            itemComp?.visibility=View.GONE
+        }else{
+            item?.visibility=View.GONE
+            itemComp?.visibility=View.VISIBLE
+        }
     }
 
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.wakely.MainActivity
 
 import com.mustafayusef.wakely.R
@@ -45,20 +46,29 @@ class companyAdapter(
         // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
         val comp=companyResponse.data.get(position)
 
-       holder.view. storeTitle?.text=comp.title
+        if(comp.title.length>14){
+            holder.view. storeTitle?.text=comp.title.subSequence(0,13).toString()+".."
+        }else{
+            holder.view. storeTitle?.text=comp.title
+        }
+        holder.view.discStore.visibility=View.GONE
 
-        Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+comp.image)
+        Glide.with(context).load("http://api.alwakiel.com/storage/images/"+comp.image)
             .into(holder.view?.storeImage)
         holder.view.setOnClickListener {
-            if(MainActivity.cacheObj.token!=""){
+            if(MainActivity.cacheObj.token!=""&&(MainActivity.cacheObj.role==0||MainActivity.cacheObj.role==2)){
                 var bundel=Bundle()
+                bundel.putString("name",comp.title)
                 bundel.putString("CompId",comp._id)
                 bundel.putString("image",comp.image)
                 holder.view.findNavController()?.navigate(R.id.sections,bundel)
 
+            }else{
+                context?.toast("غير مسموح")
             }
 
         }
+
     }
 
 

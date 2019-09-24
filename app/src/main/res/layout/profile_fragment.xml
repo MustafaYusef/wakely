@@ -10,6 +10,8 @@
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/profCon"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -24,8 +26,9 @@
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="226dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
+                    android:paddingBottom="30dp"
 
                     android:orientation="vertical"
                     android:background="@drawable/back_profile"
@@ -33,7 +36,7 @@
                   <LinearLayout
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-
+                           android:layoutDirection="ltr"
                           android:layout_marginBottom="10dp"
                           android:orientation="horizontal">
                       <LinearLayout
@@ -55,6 +58,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
+                            android:id="@+id/titProfile"
                             android:textColor="@color/white"
                             android:textSize="22sp"
                             android:fontFamily="@font/font_bold"
@@ -79,7 +83,8 @@
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="right">
+                        android:gravity="right"
+                        android:layoutDirection="ltr">
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -94,8 +99,8 @@
                                 android:drawablePadding="5dp"
                                 android:fontFamily="@font/font_regular"
                                 android:gravity="right|center"
-                                android:textSize="20sp"
-                                android:text="mdkd"
+                                android:textSize="16sp"
+
                                 android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -106,8 +111,8 @@
                                 android:drawablePadding="5dp"
                                 android:fontFamily="@font/font_regular"
                                 android:gravity="right|center"
-                                android:textSize="20sp"
-                                android:text="mdkd"
+                                android:textSize="16sp"
+
                                 android:textColor="@color/white" />
                         <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/phoneShop"
@@ -117,8 +122,8 @@
                                 android:drawablePadding="5dp"
                                 android:fontFamily="@font/font_regular"
                                 android:gravity="right|center"
-                                android:textSize="20sp"
-                                android:text="mdkd"
+                                android:textSize="16sp"
+
                                 android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -134,7 +139,7 @@
                                 android:layout_height="100dp"
                                 android:layout_gravity="center|top"
                                 android:layout_margin="5dp"
-                                android:src="@drawable/pepsi" />
+                               />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -173,6 +178,7 @@
                         android:text="معلومات صاحب المحل"
                         android:textSize="20sp"
                         android:inputType="text"
+                        android:id="@+id/infop"
                         android:padding="10dp"
                         android:textColor="@color/colorAccent" />
 
@@ -183,12 +189,12 @@
                         android:backgroundTint="@color/white"
                         android:drawableRight="@drawable/ic_account_circle_black_24dp"
                         android:drawablePadding="10dp"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_marginRight="20dp"
                         android:fontFamily="@font/font_regular"
                         android:gravity="right|center"
                         android:padding="10dp"
-                        android:text="jnxjn"
+
                         android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -200,8 +206,8 @@
                         android:layout_marginRight="20dp"
                         android:drawableRight="@drawable/ic_call_white_24dp"
                         android:drawablePadding="10dp"
-                        android:textSize="20sp"
-                        android:text="ueu"
+                        android:textSize="18sp"
+
                         android:fontFamily="@font/font_regular"
                         android:gravity="right|center"
                         android:padding="10dp"

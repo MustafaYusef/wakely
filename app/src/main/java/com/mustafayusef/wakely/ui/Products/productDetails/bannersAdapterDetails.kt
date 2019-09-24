@@ -27,7 +27,7 @@ class bannersAdapterDetails(val context: Context, val response: List<ProductPric
         var data=response!!.get(position)
 
 
-            Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+data.image)
+            Glide.with(context).load("http://api.alwakiel.com/storage/images/"+data.image)
               .into(  viewHolder.itemView.slid_Image)
 
 //       viewHolder.itemView.setOnClickListener {

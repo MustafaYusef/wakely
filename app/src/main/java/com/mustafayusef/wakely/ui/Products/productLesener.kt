@@ -13,6 +13,7 @@ interface productLesener {
     fun OnSuccessGetCart(message: Cart)
 
     fun OnSuccessSend(message:productsResponse)
+    fun OnSuccessDisscount(message:productsResponse)
 
 
 

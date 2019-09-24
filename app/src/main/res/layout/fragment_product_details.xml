@@ -22,27 +22,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <com.smarteist.autoimageslider.SliderView
+        <ImageView
                 android:id="@+id/storesSliderD"
 
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
                 android:background="@color/gray"
+                android:scaleType="fitXY"
                 android:cropToPadding="true"
-                app:sliderAnimationDuration="300"
-                app:sliderAutoCycleDirection="back_and_forth"
-                app:sliderAutoCycleEnabled="true"
-                app:sliderCircularHandlerEnabled="false"
-                app:sliderIndicatorAnimationDuration="300"
-                app:sliderIndicatorGravity="center_horizontal|bottom"
-                app:sliderIndicatorMargin="30dp"
-                app:sliderIndicatorOrientation="horizontal"
-                app:sliderIndicatorPadding="3dp"
-                app:sliderIndicatorRadius="2dp"
-                app:sliderIndicatorSelectedColor="@color/colorAccent"
-                app:sliderIndicatorUnselectedColor="#FFF"
-                app:sliderScrollTimeInSec="1"
-                app:sliderStartAutoCycle="false" />
+             />
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -68,6 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
+                    android:layoutDirection="ltr"
                     android:layout_margin="10dp">
                 <TextView
                         android:layout_width="wrap_content"
@@ -125,17 +114,22 @@
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
-            <TextView
+            <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="136dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:fontFamily="@font/font_bold"
-                    android:gravity="right"
-                    android:id="@+id/DetailsD"
-                    android:text="معلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتج"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:layout_height="200dp">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/font_bold"
+                        android:gravity="right"
+                        android:id="@+id/DetailsD"
+                        android:text="معلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتجمعلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتجمعلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتجمعلومات المنتج معلومات المنتج معلومات المنتج معلومات المنتج"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+            </ScrollView>
+
 
             <TextView
                     android:layout_width="match_parent"
@@ -149,18 +143,84 @@
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
-            <LinearLayout
-                    android:layout_width="match_parent"
+<!--            <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center">-->
+<!--                <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/ListVolum"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        />-->
+<!--            </LinearLayout>-->
+            <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center">
-                <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/ListVolum"
+                    >
+
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        android:layout_centerVertical="true"
-                        />
-            </LinearLayout>
+                        android:padding="5dp">
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="1 L"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="20sp"
+                            android:id="@+id/vol1"
+                            android:visibility="gone"
+                            android:textColor="@color/white"
+                            android:background="@drawable/round_btn_black"/>
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="1 L"
+                            android:visibility="gone"
+                            android:id="@+id/vol2"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/round_btn_black"/>
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="1 L"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:id="@+id/vol3"
+                            android:textColor="@color/white"
+                            android:background="@drawable/round_btn_black"/>
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="1 L"
+                            android:visibility="gone"
+                            android:id="@+id/vol4"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/round_btn_black"/>
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="1 L"
+                            android:visibility="gone"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="20sp"
+                            android:id="@+id/vol5"
+                            android:textColor="@color/white"
+                            android:background="@drawable/round_btn_black"/>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
 
         </LinearLayout>
     </LinearLayout>
@@ -169,6 +229,8 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
+            android:layoutDirection="ltr"
+            android:id="@+id/shopOnly"
             android:layout_height="wrap_content">
 
 

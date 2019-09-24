@@ -9,4 +9,7 @@ object corurtins {
         CoroutineScope(Dispatchers.Main).launch {
             work()
         }
+    fun cancel(){
+
+    }
 }

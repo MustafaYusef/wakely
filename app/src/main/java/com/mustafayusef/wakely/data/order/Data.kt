@@ -7,4 +7,4 @@ data class Data(
     val order: List<Order>,
     val totalPrice: Int,
     val totalQuantities: Int
-): Serializable
+):Serializable

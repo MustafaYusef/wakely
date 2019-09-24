@@ -23,6 +23,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.mustafayusef.holidaymaster.networks.networkIntercepter
 import com.mustafayusef.holidaymaster.utils.toast
 import com.mustafayusef.wakely.MainActivity
@@ -36,6 +39,7 @@ import com.mustafayusef.wakely.ui.auth.AuthRepostary
 import com.mustafayusef.wakely.ui.auth.AuthViewModel
 import com.mustafayusef.wakely.ui.auth.AuthViewModelFactory
 import kotlinx.android.synthetic.main.fragment_update_profile.*
+import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.progress.*
 import kotlinx.android.synthetic.main.regester_shops_fragment_tow.*
 import okhttp3.MediaType
@@ -100,6 +104,17 @@ class UpdateProfile : Fragment(),AuthLesener {
             }
 
         }
+        val itemComp= activity?.findViewById<View>(R.id.ordersCompany)
+        val item= activity?.findViewById<View>(R.id.orders_fragment)
+        if(MainActivity.cacheObj.role!=2){
+            item?.visibility=View.VISIBLE
+            itemComp?.visibility=View.GONE
+        }else{
+            item?.visibility=View.GONE
+            itemComp?.visibility=View.VISIBLE
+        }
+
+
         val networkIntercepter= context?.let { networkIntercepter(it) }
         val api= networkIntercepter?.let { myApi(it) }
         val repostary= AuthRepostary(api!!)
@@ -109,16 +124,53 @@ class UpdateProfile : Fragment(),AuthLesener {
         viewModel?.Auth=this
 
         UpdateBtn?.setOnClickListener {
-            viewModel?.Update(MainActivity.cacheObj.token
-                ,nameShopU.text.toString()
-                ,titleShopsU.text.toString()
-                ,phoneU.text.toString(),imagesBodyRequest!!)
+            if(!nameShopU.text.toString().isNullOrEmpty()&&
+            !titleShopsU.text.toString().isNullOrEmpty()&&
+            !phoneU.text.toString().isNullOrEmpty()){
+                if(imagesBodyRequest!=null){
+                viewModel?.Update(MainActivity.cacheObj.token
+                    ,nameShopU.text.toString()
+                    ,titleShopsU.text.toString()
+                    ,phoneU.text.toString(),imagesBodyRequest!!)
+            }else{
+                    context?.toast("أختر صورة رجاء")
+                }
+            }
+            else{
+                context?.toast("أكمل جميع الحقول")
+            }
+
         }
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+       var name=arguments!!.getString("name")
+        var title=arguments!!.getString("title")
+        var phone=arguments!!.getString("phone")
+        var image=arguments!!.getString("image")
+
+        circleImageViewU?.let {it1->
+            context?.let {
+                Glide.with(it).load("http://api.alwakiel.com/storage/images/"+image)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(15)))
+                    .into( it1)
+            }
+        }
+        SelectPhotoU.alpha=0f
+
+        titleShopsU?.setText(title)
+        nameShopU?.setText(name)
+        phoneU?.setText(phone)
+
+        if(MainActivity.cacheObj.role==2){
+            titleShopsU?.hint="عنوان الشركة"
+            nameShopU?.hint="أسم مدير المبيعات"
+            phoneU?.hint="رقم مدير المبيعات"
+        }
+
 
         SelectPhotoU?.setOnClickListener {
             if (Build.VERSION.SDK_INT < 19) {

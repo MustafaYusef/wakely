@@ -38,7 +38,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_regular"
                     android:textColor="@color/colorAccent"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
+                    android:gravity="center"
                     android:id="@+id/storeTitle"
                     android:text="اسم المحل"/>
             <TextView
@@ -47,8 +48,8 @@
                     android:id="@+id/discStore"
 
                     android:fontFamily="@font/font_regular"
-
-                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:textSize="15sp"
                     android:text="لا يوجد وصف"/>
 
 

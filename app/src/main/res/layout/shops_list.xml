@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2"
+            android:layoutDirection="ltr"
             android:orientation="horizontal">
 
         <TextView
@@ -23,6 +24,7 @@
                 android:fontFamily="@font/font_bold"
                 android:gravity="left|bottom"
                 android:text="عرض الكل"
+                android:id="@+id/showAll"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp" />
         <LinearLayout

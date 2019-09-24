@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.graphics.Color
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.BannersResponse
@@ -75,17 +76,26 @@ class MainScreenAdapter(
           holder.view. storesSlider?.scrollTimeInSec = 3 //set scroll delay in seconds :
           holder.view. storesSlider?.startAutoCycle()
       }
-        else if(position==1){
+        else if(position==2){
           holder.view.shopsList?.layoutManager= LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
           holder.view.shopsList?.adapter=companyAdapter(context,companyResponse)
           holder.view.titleCom?.text="الشركات"
+          holder.view.showAll?.setOnClickListener {
+              holder.view.findNavController()?.navigate(R.id.showAllComp)
+
+
+          }
       }
-      else if(position==2){
+      else if(position==3){
           holder.view.shopsList?.layoutManager= LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
           holder.view.shopsList?.adapter=shopsAdapter(context,shopsResponse)
           holder.view.titleCom?.text="المحلات"
+          holder.view.showAll?.setOnClickListener {
+              holder.view.findNavController()?.navigate(R.id.showAll2)
+          }
       }
-      else if(position==3){
+      else if(position==1){
+          holder.view.showAll?.visibility=View.INVISIBLE
           holder.view.shopsList?.layoutManager= LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
           holder.view.shopsList?.adapter=spicialAdapter(context,disscountResponse)
           holder.view.titleCom?.text="العروض"

@@ -19,7 +19,9 @@ import com.mustafayusef.wakely.ui.auth.AuthLesener
 import com.mustafayusef.wakely.ui.auth.AuthRepostary
 import com.mustafayusef.wakely.ui.auth.AuthViewModel
 import com.mustafayusef.wakely.ui.auth.AuthViewModelFactory
+import com.onesignal.OneSignal
 import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.android.synthetic.main.progress.*
 
 class login : Fragment(),AuthLesener {
     override fun OnSuccessUpdate(response: loginResponse) {
@@ -31,28 +33,32 @@ class login : Fragment(),AuthLesener {
     }
 
     override fun OnStart() {
-        context?.toast("start")
+        progLoading?.visibility=View.VISIBLE
     }
 
     override fun OnSuccess(response: loginResponse) {
-        context?.toast(response.data.token)
+        progLoading?.visibility=View.GONE
+    //    context?.toast(response.data.token)
         MainActivity.cacheObj.token=response.data.token
         MainActivity.cacheObj.role=response.data.role
+        println("tooooooooooooooooooooooooken    "+response.data.token)
           if(MainActivity.cacheObj.role==1){
               view?.findNavController()?.navigate(R.id.regesterShops)
-          }else if(MainActivity.cacheObj.role==0) {
+          }else if(MainActivity.cacheObj.role==0||MainActivity.cacheObj.role==2) {
               view?.findNavController()?.navigate(R.id.main_fragment)
           }
 
     }
 
     override fun onFailer(message: String) {
-        context?.toast(message)
+        context?.toast("هناك مشكلة ما")
+        progLoading?.visibility=View.GONE
 
     }
 
     override fun onFailerNet(message: String) {
-        context?.toast(message)
+        context?.toast("مشكلة في الأتصال")
+        progLoading?.visibility=View.GONE
     }
 
     companion object {
@@ -75,11 +81,7 @@ class login : Fragment(),AuthLesener {
         super.onActivityCreated(savedInstanceState)
        // viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
 
-        if(MainActivity.cacheObj.role==1&&MainActivity.cacheObj.token!=""){
-            view?.findNavController()?.navigate(R.id.regesterShops)
-        }else if(MainActivity.cacheObj.role==0&&MainActivity.cacheObj.token!=""){
-            view?.findNavController()?.navigate(R.id.main_fragment)
-        }
+
 
         val networkIntercepter= context?.let { networkIntercepter(it) }
         val api= networkIntercepter?.let { myApi(it) }
@@ -90,10 +92,16 @@ class login : Fragment(),AuthLesener {
         viewModel?.Auth=this
 
         loginBtn?.setOnClickListener {
-            if(phoneLogin.text.toString()!=""&&passLogin.text.toString()!=""){
-                viewModel.Login(phoneLogin.text.toString(),passLogin.text.toString())
+            if(phoneLogin.text.toString().isNullOrEmpty()){
+                context?.toast("يرجى أدخال رقم الهاتف")
+
+            }else if(passLogin.text.toString().isNullOrEmpty()){
+                context?.toast("يرجى أدخال كلمة المرور")
+            }else if(phoneLogin.text.toString().length<10){
+                context?.toast("الرقم غير صحيح")
             }else{
-                context?.toast("invalide")
+                val playerId:String= OneSignal.getPermissionSubscriptionState().subscriptionStatus.userId
+                viewModel.Login(phoneLogin.text.toString(),passLogin.text.toString(),playerId)
             }
 
         }
@@ -104,6 +112,8 @@ class login : Fragment(),AuthLesener {
         val bottomNav = activity?.findViewById<com.google.android.material.bottomnavigation.BottomNavigationView> (R.id.bottomNav)
 
         val toolbar = activity?.findViewById<androidx.appcompat.widget.Toolbar> (R.id.ToolBar)
+
+
         view?.findNavController()?.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.login) {
                 bottomNav?.visibility = View.GONE
@@ -116,7 +126,9 @@ class login : Fragment(),AuthLesener {
 
         }
         goToMain.setOnClickListener {
-            view?.findNavController().navigate(R.id.fromLogToMain)
+            var bundel=Bundle()
+            bundel.putBoolean("flage",true)
+            view?.findNavController().navigate(R.id.main_fragment,bundel)
         }
         toReg.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_login_to_reqester)

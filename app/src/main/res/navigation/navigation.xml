@@ -2,10 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation"
-            app:startDestination="@id/login">
+            app:startDestination="@id/main_fragment">
 
     <fragment android:id="@+id/main_fragment" android:name="com.mustafayusef.wakely.ui.main.MainScreen"
-              android:label="main_screen_fragment" tools:layout="@layout/main_screen_fragment"/>
+              android:label="main_screen_fragment"
+            tools:layout="@layout/main_screen_fragment">
+        <action
+                android:id="@+id/action_main_fragment_to_login"
+                app:destination="@id/login" />
+    </fragment>
+
+
+
     <fragment
             android:id="@+id/login"
             android:name="com.mustafayusef.wakely.ui.auth.login.login"
@@ -80,4 +88,35 @@
             android:id="@+id/nationalProd"
             android:name="com.mustafayusef.wakely.ui.Products.nationalProduct.nationalProd"
             android:label="nationalProd" />
+    <fragment
+            android:id="@+id/orderProduct"
+            android:name="com.mustafayusef.wakely.ui.orders.orderDetails.orderProduct"
+            android:label="orderProduct" />
+    <fragment
+            android:id="@+id/ordersCompany"
+            android:name="com.mustafayusef.wakely.ui.orders.companyOrders.ordersCompany"
+            android:label="orders_company_fragment"
+            tools:layout="@layout/orders_company_fragment" />
+    <fragment
+            android:id="@+id/orderDetails"
+            android:name="com.mustafayusef.wakely.ui.orders.companyOrders.detailsOrderComp.orderDetails"
+            android:label="fragment_order_details"
+            tools:layout="@layout/fragment_order_details" />
+    <fragment
+            android:id="@+id/outFrag"
+            android:name="com.mustafayusef.wakely.ui.main.Adapters.outFrag"
+            android:label="outFrag" />
+    <fragment
+            android:id="@+id/showAll2"
+            android:name="com.mustafayusef.wakely.ui.main.showAllCompany.showAll"
+            android:label="fragment_show_all"
+            tools:layout="@layout/fragment_show_all" />
+    <fragment
+            android:id="@+id/showAllComp"
+            android:name="com.mustafayusef.wakely.ui.main.showAllCompany.showAllComp"
+            android:label="showAllComp" />
+    <fragment
+            android:id="@+id/productesNoSec"
+            android:name="com.mustafayusef.wakely.ui.compSection.productesNoSec"
+            android:label="productesNoSec" />
 </navigation>

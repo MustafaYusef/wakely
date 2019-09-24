@@ -15,4 +15,7 @@ interface MainLesener {
     )
     fun onFailer(message:String)
     fun onFailerNet(message:String)
+    fun onSuccessAll(message:ShopsResponse)
+    fun onSuccessAllComp(message:ShopsResponse)
+
 }

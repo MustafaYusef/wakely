@@ -6,5 +6,13 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:visibility="gone"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"/>
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/nothing"
+            android:text="لا يوجد شيْ في السلة"/>
 </merge>

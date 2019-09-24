@@ -47,6 +47,10 @@ class profile : Fragment() ,AuthLesener{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         //viewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
+           if(MainActivity.cacheObj.token==""){
+               view?.findNavController()?.navigate(R.id.login)
+               context?.toast("يجب ان تمتلك حساب")
+           }
 
         val bottomNav = activity?.findViewById<com.google.android.material.bottomnavigation.BottomNavigationView> (R.id.bottomNav)
         val toolbar = activity?.findViewById<androidx.appcompat.widget.Toolbar> (R.id.ToolBar)
@@ -62,7 +66,23 @@ class profile : Fragment() ,AuthLesener{
 
         }
 
+        if(MainActivity.cacheObj.role==2){
+            titProfile?.text="معلومات الشركة"
+            infop?.text="معلومات مدير المبيعات"
+            Email?.visibility=View.VISIBLE
 
+        }
+
+
+        val itemComp= activity?.findViewById<View>(R.id.ordersCompany)
+        val item= activity?.findViewById<View>(R.id.orders_fragment)
+        if(MainActivity.cacheObj.role!=2){
+            item?.visibility=View.VISIBLE
+            itemComp?.visibility=View.GONE
+        }else{
+            item?.visibility=View.GONE
+            itemComp?.visibility=View.VISIBLE
+        }
 
         val networkIntercepter= context?.let { networkIntercepter(it) }
         val api= networkIntercepter?.let { myApi(it) }
@@ -75,7 +95,12 @@ class profile : Fragment() ,AuthLesener{
         viewModel?.Profile(MainActivity.cacheObj.token)
 
         EditeBtn?.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.updateProfile)
+            var bundel=Bundle()
+            bundel.putString("name",pro?.data?.user?.name)
+            bundel.putString("title",pro?.data?.company?.title)
+            bundel.putString("phone",pro?.data?.company?.phone)
+            bundel.putString("image",pro?.data?.company?.image)
+            view?.findNavController()?.navigate(R.id.updateProfile,bundel)
         }
         logOut?.setOnClickListener {
             MainActivity.cacheObj.token=""
@@ -103,11 +128,19 @@ class profile : Fragment() ,AuthLesener{
         context?.toast("مشكلة في الأتصال")
         progLoading?.visibility=View.GONE
     }
+    var pro:com.mustafayusef.wakely.data.profile.profile?=null
     override fun OnSuccessProfile(message: com.mustafayusef.wakely.data.profile.profile) {
+        profCon?.visibility=View.VISIBLE
+        pro=message
+        profileImage?.let {it1->
+            context?.let {
+                Glide.with(it).load("http://api.alwakiel.com/storage/images/"+message.data.company.image)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(15)))
+                    .into( it1)
+            }
+        }
 
-        Glide.with(context!!).load("https://alwakel.herokuapp.com/storage/images/"+message.data.company.image)
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(15)))
-            .into( profileImage)
+        Email?.text=message.data.user.email
 
         titleShopsP?.text=message.data.company.title
         phoneShop?.text=message.data.company.phone

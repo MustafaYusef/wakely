@@ -2,12 +2,15 @@ package com.mustafayusef.wakely.ui.main.Adapters
 
 
 import android.content.Context
+import android.os.Bundle
 
 import com.smarteist.autoimageslider.SliderViewAdapter
 import com.bumptech.glide.Glide
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import com.mustafayusef.wakely.MainActivity
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.BannersResponse
 
@@ -25,8 +28,17 @@ class bannersAdapter(val context: Context,val response: BannersResponse?) : Slid
       //  viewHolder.itemView. .text = "This is slider item $position"
         var data=response!!.data.get(position)
 
+        viewHolder.itemView.setOnClickListener {
+            if(MainActivity.cacheObj.token!=""){
+                var bundel= Bundle()
+                bundel.putString("CompId",data.companyId)
+                bundel.putString("image",data.image)
+                viewHolder.itemView.findNavController()?.navigate(R.id.sections,bundel)
 
-            Glide.with(context).load("https://alwakel.herokuapp.com/storage/images/"+data.image)
+            }
+        }
+
+            Glide.with(context).load("http://api.alwakiel.com/storage/images/"+data.image)
               .into(  viewHolder.itemView.slid_Image)
 
 //       viewHolder.itemView.setOnClickListener {

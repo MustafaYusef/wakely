@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layoutDirection="ltr"
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/orderCart"
             android:layout_gravity="bottom">
 

@@ -25,6 +25,7 @@ class sections : Fragment(),SecLesener {
     override fun OnSuccessRate(message: acceptRes) {
         context?.toast(message.message)
         progLoading?.visibility=View.GONE
+        viewModel.getCtegore(MainActivity.cacheObj.token,id!!)
     }
 
     override fun OnSuccessProduct(response: productsResponse) {
@@ -46,7 +47,7 @@ class sections : Fragment(),SecLesener {
     }
     var image:String?=null
     var name:String?=null
-
+    var id:String?=null
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val networkIntercepter= context?.let { networkIntercepter(it) }
@@ -54,7 +55,7 @@ class sections : Fragment(),SecLesener {
         val repostary= SecRepostary(api!!)
         val factory= SectionViewModelFactory(repostary)
 
-       var id=arguments!!.getString("CompId")
+       id=arguments!!.getString("CompId")
          image=arguments!!.getString("image")
          name=arguments!!.getString("name")
 

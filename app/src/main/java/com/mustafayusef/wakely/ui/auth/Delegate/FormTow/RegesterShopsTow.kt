@@ -50,6 +50,8 @@ import java.io.File
 class RegesterShopsTow : Fragment(),DelegateLesener {
     override fun OnSuccessProv(response: provRes) {
         var ind=0
+        province.clear()
+
         progLoading?.visibility=View.GONE
         resProv=response.data
         println("djccccccccjcjjcjj "+resProv)
@@ -68,6 +70,7 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
 
     override fun OnSuccessCity(response: provRes) {
         var ind=0
+        cities.clear()
         progLoading?.visibility=View.GONE
         resCity=response.data
         for(i in response.data){
@@ -149,7 +152,6 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
 
         viewModel = ViewModelProviders.of(this,factory).get(RegesterShopsViewModel::class.java)
         viewModel?.Auth=this
-
         //viewModel.GetProv()
 
 
@@ -217,6 +219,7 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
     fun ShowProv(
         array: ArrayList<String>
     ){
+
         val dview: View = layoutInflater.inflate(R.layout.filters_dilog1, null)
         val builder = context?.let { AlertDialog.Builder(it).setView(dview) }
         val malert= builder?.show()
@@ -255,6 +258,7 @@ class RegesterShopsTow : Fragment(),DelegateLesener {
     fun ShowCity(
         array: ArrayList<String>
     ){
+
         val dview: View = layoutInflater.inflate(R.layout.filters_dilog1, null)
         val builder = context?.let { AlertDialog.Builder(it).setView(dview) }
         val malert= builder?.show()

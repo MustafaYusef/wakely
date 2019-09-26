@@ -53,7 +53,7 @@ class productsOrderAdapter(
 
 //                holder.view.priceProd.text= data?.price.toString()!!
 
-        holder.view. priceProd.text=data1.price.toString()+" $"
+        holder.view. priceProd.text=data1.price.toString()+" IQD"
         holder.view. quantityOr.text=data1.quantity.toString()
         holder.view. prodTitle.text=data.title
         holder.view.volum.text=data.productPrices[0].shortDescription

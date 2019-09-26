@@ -51,7 +51,7 @@ class NationalProductsAdapter(
         }
 
         holder.view.prodTitle.text=data.title
-        holder.view.priceProd.text= data?.productPrices[0]!!.price.toString()!!
+        holder.view.priceProd.text= data?.productPrices[0]!!.price.toString()!!+"IQD"
         Glide.with(context).load("http://api.alwakiel.com/storage/images/"+
                 data.productPrices[0].image)
             .into(  holder.view.circleImageViewProd)

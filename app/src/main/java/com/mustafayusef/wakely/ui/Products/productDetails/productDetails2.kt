@@ -15,6 +15,8 @@ import com.mustafayusef.wakely.MainActivity
 import com.mustafayusef.wakely.R
 import com.mustafayusef.wakely.data.*
 import com.mustafayusef.wakely.data.cart.Cart
+import com.mustafayusef.wakely.data.cart.Product
+import com.mustafayusef.wakely.data.cart.ProductPrice
 import com.mustafayusef.wakely.network.myApi
 import com.mustafayusef.wakely.ui.Products.ProductRepostary
 import com.mustafayusef.wakely.ui.Products.ProductViewModelFactory
@@ -24,7 +26,7 @@ import kotlinx.android.synthetic.main.fragment_product_details.*
 import kotlinx.android.synthetic.main.progress.*
 
 
-class productDetails : Fragment(),
+class productDetails2 : Fragment(),
     volumesAdapter.OnNoteLisener,productLesener,View.OnClickListener {
 
 var base:String="http://api.alwakiel.com/storage/images/"
@@ -94,7 +96,7 @@ var base:String="http://api.alwakiel.com/storage/images/"
 
     }
 
-    var data: productData?=null
+    var data: Product?=null
     var selectedPrice:Int?=null
     var TotalPrice:Int?=null
     var selectedId:String?=null
@@ -107,13 +109,13 @@ var base:String="http://api.alwakiel.com/storage/images/"
         viewModel = ViewModelProviders.of(this,factory).get(ProductesViewModel::class.java)
         viewModel?.Auth=this
 
-         data =arguments!!.getSerializable("product") as productData
+         data =arguments!!.getSerializable("product") as Product
 
         selectedPrice= data!! .productPrices[0].price
         findVolume(data!! .productPrices)
 
         prodTitleD?.text=data!! .title
-        priceDetails?.text=selectedPrice.toString()
+        priceDetails?.text=selectedPrice.toString()+"IQD"
         numItem?.text=num.toString()
         totPrice?.text= data!!.productPrices.get(0).price.toString()+"IQD"
         DetailsD?.text=data!!.description
@@ -235,7 +237,7 @@ var base:String="http://api.alwakiel.com/storage/images/"
             }
         }
     }
-   fun findVolume(voulums: List<com.mustafayusef.wakely.data.ProductPrice>){
+   fun findVolume(voulums: List<ProductPrice>){
        for(i in 0 until  voulums.size){
            if(i==0){
               vol1.visibility=View.VISIBLE

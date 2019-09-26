@@ -119,4 +119,8 @@
             android:id="@+id/productesNoSec"
             android:name="com.mustafayusef.wakely.ui.compSection.productesNoSec"
             android:label="productesNoSec" />
+    <fragment
+            android:id="@+id/productDetails2"
+            android:name="com.mustafayusef.wakely.ui.Products.productDetails.productDetails2"
+            android:label="productDetails2" />
 </navigation>

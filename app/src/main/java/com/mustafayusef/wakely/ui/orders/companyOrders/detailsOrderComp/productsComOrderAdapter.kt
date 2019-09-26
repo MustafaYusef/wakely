@@ -80,11 +80,11 @@ class productsComOrderAdapter(
             holder.view.locationRegO?.text=order!!.provinceDetails.name+" - "+order!!.cityDetails.name+
                     " - "+order!!.location.nearLocation
 
-            holder.view.TotalPriceO?.text=order!!.price.toString()
+            holder.view.TotalPriceO?.text=order!!.price.toString()+" IQD"
         }else{
             var data=response.get(position-1)
             var data1=response1 .get(position-1)
-            holder.view. priceProd.text=data1.price.toString()+" $"
+            holder.view. priceProd.text=data1.price.toString()+" IQD"
             holder.view. quantityOr.text=data1.quantity.toString()
             holder.view. prodTitle.text=data.title
 

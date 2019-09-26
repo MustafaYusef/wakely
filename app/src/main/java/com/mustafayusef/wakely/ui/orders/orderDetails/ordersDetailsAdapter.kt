@@ -41,7 +41,7 @@ class ordersDetailsAdapter(
         // holder.view.LogoAir .startAnimation(AnimationUtils.loadAnimation(context,R.anim.left_to_right))
        var data=response .get(position)
         holder.view. tileCompO.text=data.companyDetails.title
-        holder.view.PriceO.text=data.price  .toString()+" $"
+        holder.view.PriceO.text=data.price  .toString()+" IQD"
        // holder.view.dayNum.
         holder.view.quantityO.text=data.totalQuantities .toString()
 

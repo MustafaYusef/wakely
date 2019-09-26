@@ -51,14 +51,14 @@ class CartAdapter(
         }
 
         holder.view.prodTitle.text=data?.product.title
-        holder.view.priceProd.text= data?.product .productPrices[0]!!.price.toString()!!
+        holder.view.priceProd.text= data?.product .productPrices[0]!!.price.toString()+"IQD"
         Glide.with(context).load("http://api.alwakiel.com/storage/images/"+
                 data.product.productPrices[0].image)
             .into(  holder.view.circleImageViewProd)
         holder.view.setOnClickListener {
             var bundel=Bundle()
             bundel.putSerializable("product",data.product)
-            holder.view.findNavController().navigate(R.id.productDetails,bundel)
+            holder.view.findNavController().navigate(R.id.productDetails2,bundel)
         }
 
 //        Glide.with(context).load("http://api.centralmarketiq.com/"+carsP.image+".png").into(holder.view?.numImage)

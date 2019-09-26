@@ -61,13 +61,18 @@ class Cart : Fragment(),productLesener {
     override fun OnSuccessGetCart(message: Cart) {
         if(!message.data.isNullOrEmpty()){
             orderCart?.visibility=View.VISIBLE
+            var sum=0
+            for(i in 0 until  message.data.count()){
+                sum+=message.data[i].totalPrice
+            }
+            priceOrder?.text=sum.toString()+"IQD"
         }else{
             nothing?.visibility=View.VISIBLE
         }
         cartItemsList?.layoutManager=LinearLayoutManager(context)
         cartItemsList?.adapter=CartAdapter(context!!,message.data)
         progLoading?.visibility=View.GONE
-        priceOrder?.text=message.data[0].totalPrice.toString()
+
     }
 
 

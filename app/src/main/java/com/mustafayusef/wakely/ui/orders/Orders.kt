@@ -38,6 +38,7 @@ class Orders : Fragment(),OrdersLesener {
     override fun OnSuccessGetOrders(message: ordersRes) {
         ordersList?.layoutManager=LinearLayoutManager(context)
         ordersList?.adapter=ordersAdapter(context!!,message.data)
+        println("orders   "+ message)
         progLoading?.visibility=View.GONE
     }
     companion object {
